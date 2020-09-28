@@ -10,7 +10,23 @@ body {
     margin:1em auto;
     width:225px;
     @media screen and (max-width: $break-small) {
-        width:270px;
+        width:150px;
+    }
+}
+.search {
+    background: black;
+    color: white;
+    border: 1px solid gray;
+    font-size: 10px;
+    padding: 0 5px;
+    height: 2.5em;
+    margin: 4px 15px 0 0;
+    width: 12em;
+    @media screen and (max-width: $break-medium) {
+        display: block;
+        font-size:9px;
+        margin:0px auto;
+        width:8em;
     }
 }
 .main-title {
@@ -53,26 +69,44 @@ body {
     justify-content: space-between;
     padding:10px 20px;
     text-align:right;
+    @media screen and (max-width: $break-medium) {
+        display: block;
+        padding:10px;
+    }
 }
 .filters { 
+    @media screen and (max-width: $break-medium) {
+        display: flex;
+        margin:10px auto;
+        text-align: center;
+    }
     p {
         color:dodgerblue;
         display:initial;
         font-family: 'Roboto', sans-serif;
+        font-size:10px;
         letter-spacing: 1px;
         margin:8px 20px 0 0;
         text-transform: uppercase;
+        @media screen and (max-width: $break-medium) {
+            font-size:9px;
+            margin:8px 10px 0 0;
+        }
     }
     button {
         background:#333;
         border:none;
         color:white;
         cursor:pointer;
-        font-size:11px;
+        font-size:10px;
         height:35px;
         margin-right:5px;
         padding:2px 15px;
         text-transform:uppercase;
+        @media screen and (max-width: $break-medium) {
+            font-size:9px;
+            height:25px;
+        }
         &:hover {
             background:black;
             color:lightgray;

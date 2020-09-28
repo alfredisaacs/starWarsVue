@@ -4,15 +4,17 @@
         <img src="https://www.freepnglogos.com/uploads/star-wars-logo-1.png" class="sw-logo" alt="Star Wars" />
         <div class="subHeader">
             <h1 class="main-title">Planet List</h1>
+            
             <div class="filters">
-                <p>Sort </p>
-                <button v-on:click="orderPlanets()">By name</button>
-                <button v-on:click="orderPopulation()">By population</button>
+                <input type="text" v-model="search" placeholder="Search planet" class="search" />
+                <p>Sort by</p>
+                <button v-on:click="orderPlanets()">name</button>
+                <button v-on:click="orderPopulation()">population</button>
             </div>
         </div>
     </header>
     <div v-if="this.generalList.length" class="planet-list">
-        <planet-list-item v-for="(planet) in this.generalList" :key="planet.name" :planet-data={planet} />
+        <planet-list-item v-for="(planet) in this.transformedList" :key="planet.name" :planet-data={planet} />
     </div>
     <div v-else class="error">
         <img class="error__image" src="https://www.freeiconspng.com/uploads/star-wars-png-file-31.png" alt="Space Ship" />
@@ -39,6 +41,7 @@ export default {
             next: '',
             loadMore: false,
             key: 'index',
+            search: '',
         }
     },
     methods: {
@@ -47,7 +50,12 @@ export default {
             .then(response => response.json())
             .then(json => {
                 this.planetList = json.results
-                this.next = json.next
+                if(json.next){
+                    this.next = json.next.replace('http', 'https')
+                }else {
+                    this.next = ''
+                }
+                
                 //Loop through planetList and add individual items to generalList
                for(const property in this.planetList){
                    this.generalList.push(this.planetList[property])
@@ -98,6 +106,17 @@ export default {
             });
         }
 
+    },
+    computed: {
+        transformedList(){
+            if(this.search){
+                return this.generalList.filter((planet)=>{
+                    return this.search.toUpperCase().split(' ').every(v => planet.name.toUpperCase().includes(v))
+                })
+            }else{
+                return this.generalList;
+            }
+        } 
     },
     mounted() {
         // Get the data from api

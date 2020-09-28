@@ -62,6 +62,7 @@ export default {
     },
     data(){
         return{
+           newUrl: '', 
            planetData: [],
            date: '',
            show: false,
@@ -80,9 +81,14 @@ export default {
                 console.error("There was an error!", error);
             }); 
         },
+        updateUrl(url){
+            this.newUrl = url.replace('http', 'https')
+            this.getData(this.newUrl)
+        }
     },
     mounted() {
-        this.getData(this.planetDetail)
+        this.updateUrl(this.planetDetail);
+        
     }
 }
 </script>
