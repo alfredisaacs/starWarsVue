@@ -1,0 +1,108 @@
+@import './variables.scss';
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background:lightgray url(https://1-background.com/images/stars-1/beautiful-blue-stars-fill.jpg);
+}
+.sw-logo {
+    display:block;
+    height:auto;
+    margin:1em auto;
+    width:225px;
+    @media screen and (max-width: $break-small) {
+        width:270px;
+    }
+}
+.main-title {
+    color:dodgerblue;
+    font-family: 'Oswald', sans-serif;
+    font-size:24px;
+    font-weight: 700;
+    letter-spacing: 20px;
+    margin:0;
+    padding:0;
+    text-align:center;
+    text-shadow: 1px 1px 2px rgba(25, 25, 25, 1);
+    text-transform:uppercase;
+    @media screen and (max-width: $break-medium) {
+        font-size:18px;
+        letter-spacing:10px; 
+    }
+    @media screen and (max-width: $break-small) {
+        letter-spacing:10px;
+    }
+}
+.planets {
+    @media screen and (max-width: $break-small) {
+        max-width:100%;
+        overflow: hidden;
+    }
+    &-header {
+        background:lightgray url(https://1-background.com/images/stars-1/beautiful-blue-stars-fill.jpg);
+        position:fixed;
+        top:0;
+        width:100%;
+    }
+}
+.subHeader {
+    background:black;
+    border-bottom:1px solid darkslategray;
+    border-top:1px solid darkslategray;
+    display:flex;
+    font-size:12px;
+    justify-content: space-between;
+    padding:10px 20px;
+    text-align:right;
+}
+.filters { 
+    p {
+        color:dodgerblue;
+        display:initial;
+        font-family: 'Roboto', sans-serif;
+        letter-spacing: 1px;
+        margin:8px 20px 0 0;
+        text-transform: uppercase;
+    }
+    button {
+        background:#333;
+        border:none;
+        color:white;
+        cursor:pointer;
+        font-size:11px;
+        height:35px;
+        margin-right:5px;
+        padding:2px 15px;
+        text-transform:uppercase;
+        &:hover {
+            background:black;
+            color:lightgray;
+        }
+    }
+}
+.planet-list {
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 25px;
+    margin:190px auto 30px;
+    max-width:1024px;
+    padding:30px;
+    @media screen and (max-width: $break-medium) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media screen and (max-width: $break-small) {
+        grid-template-columns: 1fr;
+        padding:10px;
+    }
+}
+.error {
+    display: block;
+    margin:3em auto;
+    text-align:center;
+    &__image {
+        height:215px;
+        width:350px;
+    }
+    &__message {
+        color:yellow;
+    }
+}
